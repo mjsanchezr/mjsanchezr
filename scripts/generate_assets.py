@@ -32,6 +32,8 @@ THEMES = {
         "accent": "#2f81f7",
         "grid": "#21262d",
         "node": "#161b22",
+        "ai": "#a371f7",
+        "msg": "#3fb950",
         # Escala del calendario, de "sin actividad" a "maxima actividad".
         "levels": ["#161b22", "#0c2d6b", "#1158c7", "#388bfd", "#79c0ff"],
     },
@@ -43,6 +45,8 @@ THEMES = {
         "accent": "#0969da",
         "grid": "#eaeef2",
         "node": "#f6f8fa",
+        "ai": "#8250df",
+        "msg": "#1a7f37",
         "levels": ["#ebeef2", "#b6e3ff", "#54aeff", "#0969da", "#0a3069"],
     },
 }
@@ -85,61 +89,136 @@ def thousands(n):
 
 def header_svg(t):
     width, height = 1280, 320
-    # Diagrama de arquitectura a la derecha: cliente -> API -> datos.
-    node_w, node_h = 130, 44
-    nodes = [("cliente", 880, 70), ("api", 1060, 138), ("datos", 880, 206)]
+    node_w, node_h = 104, 34
+    cols = {"clientes": 840, "servicios": 984, "datos e ia": 1128}
+    # Arquitectura tipo de lo que construyo: clientes -> API y worker -> datos, IA y mensajeria.
+    # (clave, etiqueta, columna, y, color del punto)
+    nodes = [
+        ("web", "web", "clientes", 60, "accent"),
+        ("movil", "m&#243;vil", "clientes", 140, "accent"),
+        ("webhooks", "webhooks", "clientes", 220, "accent"),
+        ("api", "api", "servicios", 96, "accent"),
+        ("worker", "worker", "servicios", 196, "accent"),
+        ("postgres", "postgres", "datos e ia", 46, "accent"),
+        ("s3", "s3", "datos e ia", 110, "accent"),
+        ("ia", "ia &#183; llm", "datos e ia", 174, "ai"),
+        ("mensajes", "mensajes", "datos e ia", 238, "msg"),
+    ]
+    pos = {key: (cols[col], y) for key, _, col, y, _ in nodes}
 
-    def mid(i):
-        _, x, y = nodes[i]
+    def right(k):
+        x, y = pos[k]
+        return x + node_w, y + node_h / 2
+
+    def left(k):
+        x, y = pos[k]
         return x, y + node_h / 2
 
-    (cx, cy), (ax, ay), (dx, dy) = mid(0), mid(1), mid(2)
-    # Curvas que salen por la derecha de un nodo y entran por el lado del siguiente.
-    links = [
-        f"M{cx + node_w} {cy} C{ax - 20} {cy}, {ax - 20} {ay}, {ax} {ay}",
-        f"M{ax} {ay} C{ax - 20} {ay}, {ax - 20} {dy}, {dx + node_w} {dy}",
+    def curve(a, b):
+        (x1, y1), (x2, y2) = right(a), left(b)
+        bend = (x2 - x1) / 2
+        return f"M{x1} {y1} C{x1 + bend} {y1}, {x2 - bend} {y2}, {x2} {y2}"
+
+    api_x, api_y = pos["api"]
+    _, worker_y = pos["worker"]
+    # (id, trazado, color del paquete, duracion, retraso)
+    edges = [
+        ("e1", curve("web", "api"), "accent", 2.2, 0.0),
+        ("e2", curve("movil", "api"), "accent", 2.2, 0.7),
+        ("e3", curve("webhooks", "api"), "accent", 2.2, 1.4),
+        ("e4", f"M{api_x + node_w / 2} {api_y + node_h} L{api_x + node_w / 2} {worker_y}", "accent", 1.6, 0.4),
+        ("e5", curve("api", "postgres"), "accent", 1.8, 0.2),
+        ("e6", curve("api", "s3"), "accent", 1.8, 1.0),
+        ("e7", curve("worker", "ia"), "ai", 2.0, 0.6),
+        ("e8", curve("worker", "mensajes"), "msg", 2.0, 1.3),
     ]
-    # El trazo discontinuo avanza en bucle para sugerir datos fluyendo.
-    link_paths = "".join(
-        f'<path d="{d}" fill="none" stroke="{t["accent"]}" stroke-width="1.5" '
-        f'stroke-dasharray="4 4" opacity="0.75">'
-        f'<animate attributeName="stroke-dashoffset" from="16" to="0" dur="1.2s" repeatCount="indefinite"/>'
-        f"</path>"
-        for d in links
+
+    links = "".join(
+        f'<path id="{eid}" d="{d}" fill="none" stroke="{t["accent"]}" stroke-width="1.5" opacity="0.35"/>'
+        for eid, d, *_ in edges
     )
-    node_boxes = "".join(
-        f'<rect x="{x}" y="{y}" width="{node_w}" height="{node_h}" rx="8" '
-        f'fill="{t["node"]}" stroke="{t["border"]}"/>'
-        f'<circle cx="{x + 20}" cy="{y + node_h / 2}" r="4" fill="{t["accent"]}">'
-        f'<animate attributeName="opacity" values="1;0.35;1" dur="2.4s" begin="{i * 0.8}s" repeatCount="indefinite"/>'
+    # Paquetes que recorren cada conexion; empiezan invisibles para no aparecer en (0, 0).
+    packets = "".join(
+        f'<circle r="3.5" fill="{t[color]}" opacity="0">'
+        f'<animateMotion dur="{dur}s" begin="{delay}s" repeatCount="indefinite">'
+        f'<mpath href="#{eid}" xlink:href="#{eid}"/></animateMotion>'
+        f'<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" '
+        f'dur="{dur}s" begin="{delay}s" repeatCount="indefinite"/>'
         f"</circle>"
-        f'<text x="{x + 34}" y="{y + node_h / 2 + 5}" font-family="{MONO}" '
-        f'font-size="16" fill="{t["text"]}">{label}</text>'
-        for i, (label, x, y) in enumerate(nodes)
+        for eid, _, color, dur, delay in edges
+    )
+    boxes = "".join(
+        f'<rect x="{pos[key][0]}" y="{pos[key][1]}" width="{node_w}" height="{node_h}" rx="7" '
+        f'fill="{t["node"]}" stroke="{t["accent"] if key == "api" else t["border"]}"/>'
+        f'<circle cx="{pos[key][0] + 16}" cy="{pos[key][1] + node_h / 2}" r="3.5" fill="{t[color]}">'
+        f'<animate attributeName="opacity" values="1;0.35;1" dur="2.4s" begin="{i * 0.3}s" repeatCount="indefinite"/>'
+        f"</circle>"
+        f'<text x="{pos[key][0] + 28}" y="{pos[key][1] + node_h / 2 + 5}" font-family="{MONO}" '
+        f'font-size="14" fill="{t["text"]}">{label}</text>'
+        for i, (key, label, _, _, color) in enumerate(nodes)
+    )
+    tiers = "".join(
+        f'<text x="{x}" y="32" font-family="{MONO}" font-size="11" letter-spacing="1.5" '
+        f'fill="{t["muted"]}">{name.upper()}</text>'
+        for name, x in cols.items()
+    )
+    # Recuadro discontinuo: la API y el worker corren como contenedores.
+    container = (
+        f'<rect x="{api_x - 10}" y="{api_y - 10}" width="{node_w + 20}" height="{worker_y + node_h - api_y + 20}" '
+        f'rx="10" fill="none" stroke="{t["muted"]}" stroke-dasharray="3 4" opacity="0.6"/>'
+        f'<text x="{api_x + node_w / 2}" y="{worker_y + node_h + 30}" text-anchor="middle" font-family="{MONO}" '
+        f'font-size="11" fill="{t["muted"]}">docker</text>'
     )
 
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Mario Sanchez - Desarrollador Full Stack">
+    # Franja de CI/CD: cada etapa se ilumina por turnos, como un pipeline en marcha.
+    stages = ["git push", "ci", "tests", "deploy"]
+    chip_w, chip_h, chip_gap, chip_y, cycle = 78, 22, 24, 286, 4
+    chip_x0 = cols["clientes"]
+    pipeline = ""
+    for i, stage in enumerate(stages):
+        x = chip_x0 + i * (chip_w + chip_gap)
+        lit = ";".join("1" if k == i else "0" for k in range(len(stages))) + ";0"
+        key_times = ";".join(f"{k / len(stages):.2f}" for k in range(len(stages))) + ";1"
+        if i:
+            pipeline += (
+                f'<line x1="{x - chip_gap + 4}" y1="{chip_y + chip_h / 2}" x2="{x - 4}" y2="{chip_y + chip_h / 2}" '
+                f'stroke="{t["muted"]}" stroke-width="1.2" opacity="0.6"/>'
+            )
+        pipeline += (
+            f'<rect x="{x}" y="{chip_y}" width="{chip_w}" height="{chip_h}" rx="11" fill="{t["node"]}" stroke="{t["border"]}"/>'
+            f'<rect x="{x}" y="{chip_y}" width="{chip_w}" height="{chip_h}" rx="11" fill="none" stroke="{t["msg"]}" opacity="0">'
+            f'<animate attributeName="opacity" values="{lit}" keyTimes="{key_times}" calcMode="discrete" '
+            f'dur="{cycle}s" repeatCount="indefinite"/></rect>'
+            f'<text x="{x + chip_w / 2}" y="{chip_y + 15}" text-anchor="middle" font-family="{MONO}" '
+            f'font-size="11" fill="{t["muted"]}">{stage}</text>'
+        )
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Mario Sanchez - Desarrollador Full Stack">
   <defs>
     <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
       <circle cx="2" cy="2" r="1.2" fill="{t["grid"]}"/>
     </pattern>
     <linearGradient id="fade" x1="0" x2="1" y1="0" y2="0">
       <stop offset="0" stop-color="{t["bg"]}" stop-opacity="1"/>
-      <stop offset="0.6" stop-color="{t["bg"]}" stop-opacity="0.65"/>
+      <stop offset="0.7" stop-color="{t["bg"]}" stop-opacity="0.7"/>
       <stop offset="1" stop-color="{t["bg"]}" stop-opacity="0"/>
     </linearGradient>
   </defs>
   <rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="12" fill="{t["bg"]}" stroke="{t["border"]}"/>
   <rect x="1" y="1" width="{width - 2}" height="{height - 2}" rx="12" fill="url(#grid)"/>
-  <rect x="1" y="1" width="860" height="{height - 2}" rx="12" fill="url(#fade)"/>
+  <rect x="1" y="1" width="820" height="{height - 2}" rx="12" fill="url(#fade)"/>
   <rect x="64" y="62" width="4" height="24" rx="2" fill="{t["accent"]}"/>
   <text x="80" y="80" font-family="{MONO}" font-size="18" fill="{t["accent"]}">Caracas, Venezuela</text>
   <text x="62" y="148" font-family="{SANS}" font-size="62" font-weight="700" fill="{t["text"]}">Mario S&#225;nchez</text>
   <text x="64" y="192" font-family="{SANS}" font-size="27" font-weight="600" fill="{t["text"]}">Desarrollador Full Stack</text>
-  <text x="64" y="228" font-family="{SANS}" font-size="21" fill="{t["muted"]}">EY  &#183;  BIS Integraciones  &#183;  Bodega Provisions  &#183;  Ingenier&#237;a Inform&#225;tica UCAB</text>
+  <text x="64" y="228" font-family="{SANS}" font-size="21" fill="{t["muted"]}">EY  &#183;  BIS Integraciones  &#183;  Bodega Provisions  &#183;  UCAB</text>
   <text x="64" y="268" font-family="{MONO}" font-size="17" fill="{t["muted"]}">TypeScript / React / Node.js / NestJS / Python / PostgreSQL / Docker</text>
-  {link_paths}
-  {node_boxes}
+  {tiers}
+  {container}
+  {links}
+  {boxes}
+  {packets}
+  {pipeline}
 </svg>
 """
 
