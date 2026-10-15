@@ -115,7 +115,7 @@ def header_svg(t):
         f'fill="{t["node"]}" stroke="{t["border"]}"/>'
         f'<circle cx="{x + 20}" cy="{y + node_h / 2}" r="4" fill="{t["accent"]}"/>'
         f'<text x="{x + 34}" y="{y + node_h / 2 + 5}" font-family="{MONO}" '
-        f'font-size="14" fill="{t["text"]}">{label}</text>'
+        f'font-size="16" fill="{t["text"]}">{label}</text>'
         for label, x, y in nodes
     )
 
@@ -133,11 +133,11 @@ def header_svg(t):
   <rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="12" fill="{t["bg"]}" stroke="{t["border"]}"/>
   <rect x="1" y="1" width="{width - 2}" height="{height - 2}" rx="12" fill="url(#grid)"/>
   <rect x="1" y="1" width="820" height="{height - 2}" rx="12" fill="url(#fade)"/>
-  <rect x="64" y="68" width="4" height="22" rx="2" fill="{t["accent"]}"/>
-  <text x="80" y="85" font-family="{MONO}" font-size="16" fill="{t["accent"]}">github.com/{USER}</text>
-  <text x="62" y="152" font-family="{SANS}" font-size="56" font-weight="700" fill="{t["text"]}">Mario S&#225;nchez</text>
-  <text x="64" y="194" font-family="{SANS}" font-size="22" fill="{t["muted"]}">Desarrollador Full Stack  &#183;  Ingenier&#237;a Inform&#225;tica, UCAB</text>
-  <text x="64" y="240" font-family="{MONO}" font-size="15" fill="{t["muted"]}">TypeScript / React / Node.js / NestJS / Java / PostgreSQL / Docker</text>
+  <rect x="64" y="66" width="4" height="24" rx="2" fill="{t["accent"]}"/>
+  <text x="80" y="85" font-family="{MONO}" font-size="18" fill="{t["accent"]}">github.com/{USER}</text>
+  <text x="62" y="152" font-family="{SANS}" font-size="60" font-weight="700" fill="{t["text"]}">Mario S&#225;nchez</text>
+  <text x="64" y="198" font-family="{SANS}" font-size="27" fill="{t["muted"]}">Desarrollador Full Stack  &#183;  Ingenier&#237;a Inform&#225;tica, UCAB</text>
+  <text x="64" y="244" font-family="{MONO}" font-size="18" fill="{t["muted"]}">TypeScript / React / Node.js / NestJS / Java / PostgreSQL / Docker</text>
   {link_paths}
   {node_boxes}
 </svg>
@@ -145,11 +145,11 @@ def header_svg(t):
 
 
 def languages_svg(t, langs):
-    width = 1280
-    pad = 32
+    width = 840
+    pad = 28
     bar_y, bar_h = 32, 12
-    cols = 4
-    row_h = 34
+    cols = 3
+    row_h = 32
     rows = (len(langs) + cols - 1) // cols
     height = bar_y + bar_h + 32 + rows * row_h + 12
     bar_w = width - 2 * pad
