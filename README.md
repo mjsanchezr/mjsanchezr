@@ -1,27 +1,130 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg">
-  <img alt="Mario Sánchez — Desarrollador Full Stack" src="assets/header-light.svg" width="100%">
+  <img alt="Mario Sánchez — Desarrollador Full Stack en EY, BIS Integraciones y Bodega Provisions" src="assets/header-light.svg" width="100%">
 </picture>
 
-<p align="left">
-  <a href="https://mjsanchezr.vercel.app"><img src="https://img.shields.io/badge/Portafolio-mjsanchezr.vercel.app-1f2328?style=flat-square&logo=vercel&logoColor=white" alt="Portafolio"></a>
-  <a href="mailto:mario101104s@gmail.com"><img src="https://img.shields.io/badge/Email-mario101104s%40gmail.com-1f2328?style=flat-square&logo=gmail&logoColor=white" alt="Email"></a>
+<p align="center">
+  <a href="https://www.linkedin.com/in/mario-sanchez-ab2030370"><img src="https://img.shields.io/badge/LinkedIn-Mario_Sánchez-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  <a href="https://mjsanchezr.vercel.app"><img src="https://img.shields.io/badge/Portafolio-mjsanchezr.vercel.app-1f2328?style=for-the-badge&logo=vercel&logoColor=white" alt="Portafolio"></a>
+  <a href="mailto:mjsanchezr.eng@gmail.com"><img src="https://img.shields.io/badge/Email-mjsanchezr.eng%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
 </p>
 
-## Sobre mí
+Desarrollador full stack y estudiante de sexto semestre de Ingeniería Informática en la **Universidad Católica Andrés Bello (UCAB)**. Hoy trabajo en paralelo para una firma multinacional, **EY Venezuela**, y para dos empresas internacionales, **BIS Integraciones** (Argentina) y **Bodega Provisions LLC** (Estados Unidos / Aruba).
 
-Estudiante de Ingeniería Informática en la Universidad Católica Andrés Bello (UCAB) y desarrollador full stack. Construyo aplicaciones web completas con TypeScript, desde el modelo de datos hasta la interfaz, y me interesa especialmente el software que resuelve problemas concretos: gestión administrativa, finanzas en contextos multi-moneda y automatización de procesos que hoy se hacen a mano.
+Construyo software de punta a punta para negocios reales: plataformas web, herramientas internas, integraciones entre sistemas y automatización con inteligencia artificial. Cada proyecto lleva integración continua, pruebas automatizadas, contenedores y documentación pensada para que otra persona pueda continuar el trabajo.
 
-Trabajo con prácticas de producción en cada proyecto: integración continua, pruebas automatizadas, entornos reproducibles con Docker, migraciones versionadas y documentación pensada para que otra persona pueda continuar el trabajo.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg">
+  <img alt="Contribuciones en GitHub durante el último año" src="assets/activity-light.svg" width="100%">
+</picture>
 
-**Áreas de trabajo**
+## Experiencia
 
-- **Aplicaciones full stack** con React y Next.js en el cliente, Node.js (Express y NestJS) en el servidor y PostgreSQL como base de datos.
-- **Sistemas en tiempo real** con WebSockets (Socket.IO) para colaboración entre varios usuarios.
-- **Automatización e inteligencia artificial**: integraciones con la API de Claude (Anthropic) y Gemini, mensajería por WhatsApp, correo IMAP/SMTP y generación de documentos PDF y DOCX.
-- **Procesamiento de datos**: ETL, normalización y deduplicación de registros con Python y FastAPI.
-- **Escritorio y móvil**: aplicaciones con Electron, Capacitor (Android) y JavaFX con Gluon.
+<table>
+  <tr>
+    <td width="30%" valign="top">
+      <b>EY</b><br>
+      <sub>Caracas, Venezuela · Presencial</sub>
+    </td>
+    <td valign="top">
+      <b>Associate</b> · Jornada completa<br>
+      <sub>ago. 2026 — actualidad</sub><br>
+      Desarrollo end-to-end de soluciones tecnológicas corporativas, desde la propuesta de arquitectura hasta su implementación en distintos departamentos.
+      <br><br>
+      <b>Administrative Contractor</b> · Prácticas<br>
+      <sub>may. 2026 — ago. 2026</sub><br>
+      Prácticas en CBS-MGT como desarrollador de software, analista de datos y especialista en automatización de procesos.
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <b>BIS Integraciones</b><br>
+      <sub>Argentina · Remoto</sub>
+    </td>
+    <td valign="top">
+      <b>Software Developer</b> · Media jornada<br>
+      <sub>jul. 2026 — actualidad</sub><br>
+      Diseño y desarrollo de aplicaciones comerciales, gestionando el ciclo de vida del producto desde la arquitectura hasta su lanzamiento al mercado.
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <b>Bodega Provisions LLC</b><br>
+      <sub>Aruba · Remoto</sub>
+    </td>
+    <td valign="top">
+      <b>Integrations &amp; Logistics Developer</b> · Media jornada<br>
+      <sub>mar. 2026 — actualidad</sub><br>
+      Integraciones server-to-server con webhooks que sincronizan en tiempo real los pedidos de WooCommerce con Google Workspace, infraestructura de mensajería omnicanal para atención al cliente y el CRM interno de seguimiento de leads. También coordino la logística de servicios, las cotizaciones y la facturación internacional, con atención al cliente bilingüe.
+    </td>
+  </tr>
+</table>
+
+## Proyectos destacados
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>ALFA</h3>
+      <p>Plataforma para gestionar anticipos laborales en Venezuela (Art. 144 LOTTT): solicitud digital, validación de soportes, aprobación de RRHH, notificaciones e instrucción de pago. Monolito modular con worker en segundo plano y CI completa.</p>
+      <p><sub>TypeScript · React · Express · PostgreSQL · pg-boss · MinIO (S3) · Docker Compose · GitHub Actions</sub></p>
+      <p><a href="https://alfa-oocs.onrender.com">Ver aplicación</a> · <sub>Código privado (proyecto de equipo, UCAB)</sub></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>Finanzas Multi-moneda</h3>
+      <p>Finanzas personales en dólares, bolívares y USDT con cuatro tasas de cambio en vivo, un asesor basado en reglas que puntúa la salud financiera de 0 a 100 y un plan mensual que dice cuánto puedes gastar y si tus metas llegan a tiempo.</p>
+      <p><sub>NestJS · Next.js · TypeORM · PostgreSQL · Tailwind CSS · Recharts · Docker</sub></p>
+      <p><sub>Código privado</sub></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>ARIA</h3>
+      <p>Asistente personal de IA sobre la API de Claude que organiza tareas, notas, recordatorios y memoria por espacios de trabajo. Toda acción que sale de la máquina queda pendiente hasta que se aprueba.</p>
+      <p><sub>Claude API · NestJS · Next.js · Prisma · SQLite · WhatsApp (Baileys)</sub></p>
+      <p><sub>Código privado</sub></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/mjsanchezr/divide-la-cuenta">Divide la Cuenta</a></h3>
+      <p>Salas de hasta 15 personas para dividir la cuenta en tiempo real, en dólares o bolívares a la tasa oficial del BCV, con IVA y servicio opcionales. Pruebas end-to-end con varios usuarios simultáneos.</p>
+      <p><sub>TypeScript · Node.js · Socket.IO · Vitest · Playwright · Docker · Render</sub></p>
+      <p><a href="https://divide-la-cuenta.onrender.com">Ver aplicación</a> · <a href="https://github.com/mjsanchezr/divide-la-cuenta">Código</a></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/mjsanchezr/AVPG-Press-Brief-Automation-Architecture">Press Brief Automation</a></h3>
+      <p>Recopila noticias, las cura con Gemini y genera y envía por correo un resumen de prensa diario en PDF. Incluye un panel para revisar y ejecutar cada edición.</p>
+      <p><sub>TypeScript · Gemini API · Puppeteer · Express · React · Google Cloud Run</sub></p>
+      <p><a href="https://avpg-press-brief-automation-archite.vercel.app">Ver panel</a> · <a href="https://github.com/mjsanchezr/AVPG-Press-Brief-Automation-Architecture">Código</a></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/mjsanchezr/Ediroo">Ediroo</a></h3>
+      <p>Cliente HTTP sin dependencias sobre la Fetch API nativa: timeout configurable, reintentos automáticos, respuestas tipadas e interfaz async/await.</p>
+      <p><sub>TypeScript · Fetch API · Jest</sub></p>
+      <p><a href="https://github.com/mjsanchezr/Ediroo">Código</a></p>
+    </td>
+  </tr>
+</table>
+
+<details>
+<summary><b>Más proyectos</b></summary>
+<br>
+
+| Proyecto | Descripción | Tecnologías |
+| --- | --- | --- |
+| Leads Tracker | CRM interno para Bodega Provisions: ETL desde Excel y capturas con OCR que unificó 316 leads sin duplicados, con cadencias de seguimiento automáticas. Código privado. | Python, FastAPI, SQLite, WooCommerce API |
+| [Maze Hunter](https://github.com/mjsanchezr/Proyecto-POO-MAZEHUNTER) | Juego de laberintos procedurales diseñado con principios SOLID y portado a móvil. | Java 22, JavaFX, Gluon Mobile, JUnit 5 |
+| [EY Agenda](https://github.com/mjsanchezr/EY-Agenda) | Agenda y gestión de tareas con autenticación, recuperación de cuenta y estadísticas. | React, Zustand, Zod, Express, Prisma, JWT |
+| [Nexus C.A.](https://github.com/mjsanchezr/Proyecto-SI-NexusC.A) | Frontend de un ERP empresarial tipo intranet. [Demo](https://mjsanchezr.github.io/Proyecto-SI-NexusC.A/) | React, TypeScript, Material UI, Radix UI |
+| [Generador de Recibos](https://github.com/mjsanchezr/CARDAMOMO-Y-CELERY-GENERADOR) | Recibos de pago en `.docx` generados desde el navegador. [Demo](https://mjsanchezr.github.io/CARDAMOMO-Y-CELERY-GENERADOR/) | Java 22, Apache POI, React, Zod |
+| [Calculadora de Préstamos](https://github.com/mjsanchezr/Ingenier-a-Econ-mica-App) | Amortización francesa, reportes PDF y versión Android. [Demo](https://mjsanchezr.github.io/Ingenier-a-Econ-mica-App/) | React, Chart.js, Capacitor |
+| [Malla Curricular](https://github.com/mjsanchezr/MALLA-CURRICULAR) | Malla interactiva de Ingeniería Informática UCAB. [Demo](https://malla-curricular-seven.vercel.app) | JavaScript, HTML, CSS |
+| [Waifu Draft](https://github.com/mjsanchezr/waifu-draft) | Juego multijugador de subastas en tiempo real. [Demo](https://waifu-draft.onrender.com) | Node.js, Socket.IO, Docker |
+
+</details>
 
 ## Tecnologías
 
@@ -53,7 +156,6 @@ Trabajo con prácticas de producción en cada proyecto: integración continua, p
       <img src="https://img.shields.io/badge/Zod-3E67B1?style=flat-square&logo=zod&logoColor=white" alt="Zod">
       <img src="https://img.shields.io/badge/Zustand-443E38?style=flat-square" alt="Zustand">
       <img src="https://img.shields.io/badge/SWR-000000?style=flat-square&logo=swr&logoColor=white" alt="SWR">
-      <img src="https://img.shields.io/badge/React_Router-CA4245?style=flat-square&logo=reactrouter&logoColor=white" alt="React Router">
       <img src="https://img.shields.io/badge/Recharts-22B5BF?style=flat-square" alt="Recharts">
       <img src="https://img.shields.io/badge/Chart.js-FF6384?style=flat-square&logo=chartdotjs&logoColor=white" alt="Chart.js">
     </td>
@@ -69,7 +171,6 @@ Trabajo con prácticas de producción en cada proyecto: integración continua, p
       <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white" alt="JWT">
       <img src="https://img.shields.io/badge/Passport-34E27A?style=flat-square&logo=passport&logoColor=black" alt="Passport">
       <img src="https://img.shields.io/badge/OpenAPI-6BA539?style=flat-square&logo=openapiinitiative&logoColor=white" alt="OpenAPI">
-      <img src="https://img.shields.io/badge/Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black" alt="Swagger">
       <img src="https://img.shields.io/badge/Puppeteer-40B5A4?style=flat-square&logo=puppeteer&logoColor=white" alt="Puppeteer">
       <img src="https://img.shields.io/badge/pg--boss_(colas)-4169E1?style=flat-square" alt="pg-boss">
     </td>
@@ -83,6 +184,7 @@ Trabajo con prácticas de producción en cada proyecto: integración continua, p
       <img src="https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white" alt="Prisma">
       <img src="https://img.shields.io/badge/TypeORM-FE0803?style=flat-square&logo=typeorm&logoColor=white" alt="TypeORM">
       <img src="https://img.shields.io/badge/MinIO_/_S3-C72E49?style=flat-square&logo=minio&logoColor=white" alt="MinIO / S3">
+      <img src="https://img.shields.io/badge/ETL_y_OCR-1f2328?style=flat-square" alt="ETL y OCR">
     </td>
   </tr>
   <tr>
@@ -130,72 +232,12 @@ Trabajo con prácticas de producción en cada proyecto: integración continua, p
       <img src="https://img.shields.io/badge/WhatsApp-25D366?style=flat-square&logo=whatsapp&logoColor=white" alt="WhatsApp">
       <img src="https://img.shields.io/badge/IMAP_/_SMTP-EA4335?style=flat-square&logo=gmail&logoColor=white" alt="IMAP / SMTP">
       <img src="https://img.shields.io/badge/WooCommerce_API-96588A?style=flat-square&logo=woocommerce&logoColor=white" alt="WooCommerce API">
-      <img src="https://img.shields.io/badge/Google_Apps_Script-4285F4?style=flat-square&logo=googleappsscript&logoColor=white" alt="Google Apps Script">
+      <img src="https://img.shields.io/badge/Webhooks-1f2328?style=flat-square" alt="Webhooks">
+      <img src="https://img.shields.io/badge/Google_Workspace-4285F4?style=flat-square&logo=google&logoColor=white" alt="Google Workspace">
       <img src="https://img.shields.io/badge/Apache_POI-D22128?style=flat-square&logo=apache&logoColor=white" alt="Apache POI">
     </td>
   </tr>
 </table>
-
-## Proyectos destacados
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>ALFA</h3>
-      <p>Plataforma web para gestionar anticipos laborales en Venezuela (Art. 144 LOTTT). Flujo completo de solicitud, validación de soportes, aprobación por RRHH, notificaciones e instrucción de pago. Monolito modular con worker de tareas en segundo plano.</p>
-      <p><sub>TypeScript · React · Express · PostgreSQL · pg-boss · MinIO (S3) · Docker Compose · GitHub Actions · Jest · Vitest</sub></p>
-      <p><a href="https://alfa-oocs.onrender.com">Ver aplicación</a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/mjsanchezr/divide-la-cuenta">Divide la Cuenta</a></h3>
-      <p>Aplicación en tiempo real para dividir la cuenta de una mesa entre hasta 15 personas, en dólares o bolívares con la tasa oficial del BCV actualizada automáticamente, con IVA y servicio opcionales.</p>
-      <p><sub>TypeScript · Node.js · Express · Socket.IO · Vitest · Playwright · Docker · Render</sub></p>
-      <p><a href="https://divide-la-cuenta.onrender.com">Ver aplicación</a> · <a href="https://github.com/mjsanchezr/divide-la-cuenta">Código</a></p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/mjsanchezr/AVPG-Press-Brief-Automation-Architecture">Press Brief Automation</a></h3>
-      <p>Sistema que recopila noticias, las cura con IA y genera y envía por correo un resumen de prensa diario en PDF. Incluye un panel de control para revisar y ejecutar cada edición.</p>
-      <p><sub>TypeScript · Node.js · Gemini API · Puppeteer · Nodemailer · React · Google Cloud Run · Vercel</sub></p>
-      <p><a href="https://avpg-press-brief-automation-archite.vercel.app">Ver panel</a> · <a href="https://github.com/mjsanchezr/AVPG-Press-Brief-Automation-Architecture">Código</a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/mjsanchezr/Ediroo">Ediroo</a></h3>
-      <p>Cliente HTTP sin dependencias construido sobre la Fetch API nativa: timeout configurable, reintentos automáticos, respuestas tipadas e interfaz async/await.</p>
-      <p><sub>TypeScript · Fetch API · Jest</sub></p>
-      <p><a href="https://github.com/mjsanchezr/Ediroo">Código</a></p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/mjsanchezr/EY-Agenda">EY Agenda</a></h3>
-      <p>Aplicación de agenda y gestión de tareas con autenticación, recuperación de cuenta, preferencias de usuario y panel de estadísticas.</p>
-      <p><sub>TypeScript · React · Zustand · React Hook Form · Zod · Express · Prisma · JWT · Tailwind CSS</sub></p>
-      <p><a href="https://github.com/mjsanchezr/EY-Agenda">Código</a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/mjsanchezr/Proyecto-POO-MAZEHUNTER">Maze Hunter</a></h3>
-      <p>Juego de exploración en laberintos generados proceduralmente, con usuarios, estadísticas y niveles de dificultad. Diseñado con principios SOLID y portado a móvil reutilizando el 90 % del código.</p>
-      <p><sub>Java 22 · JavaFX · Gluon Mobile · Gson · JUnit 5 · Maven</sub></p>
-      <p><a href="https://github.com/mjsanchezr/Proyecto-POO-MAZEHUNTER">Código</a></p>
-    </td>
-  </tr>
-</table>
-
-<details>
-<summary><b>Otros proyectos</b></summary>
-<br>
-
-| Proyecto | Descripción | Tecnologías |
-| --- | --- | --- |
-| [Nexus C.A.](https://github.com/mjsanchezr/Proyecto-SI-NexusC.A) | Frontend de un ERP empresarial tipo intranet. [Demo](https://mjsanchezr.github.io/Proyecto-SI-NexusC.A/) | React, TypeScript, Material UI, Radix UI, Tailwind CSS |
-| [Generador de Recibos](https://github.com/mjsanchezr/CARDAMOMO-Y-CELERY-GENERADOR) | Generación de recibos de pago en `.docx` desde el navegador, con lógica de referencia en Java. [Demo](https://mjsanchezr.github.io/CARDAMOMO-Y-CELERY-GENERADOR/) | Java 22, Apache POI, React, Zod, GitHub Actions |
-| [Calculadora de Préstamos](https://github.com/mjsanchezr/Ingenier-a-Econ-mica-App) | Evaluación de alternativas de financiamiento por amortización, con exportación a PDF y versión Android. [Demo](https://mjsanchezr.github.io/Ingenier-a-Econ-mica-App/) | React, Tailwind CSS, Chart.js, Capacitor |
-| [Malla Curricular](https://github.com/mjsanchezr/MALLA-CURRICULAR) | Malla interactiva de Ingeniería Informática UCAB para seguir el avance de la carrera. [Demo](https://malla-curricular-seven.vercel.app) | JavaScript, HTML, CSS |
-| [Waifu Draft](https://github.com/mjsanchezr/waifu-draft) | Juego multijugador de subastas y votaciones en tiempo real para 2 a 4 jugadores. [Demo](https://waifu-draft.onrender.com) | Node.js, Express, Socket.IO, Docker |
-
-</details>
 
 ## Lenguajes
 
@@ -205,12 +247,12 @@ Trabajo con prácticas de producción en cada proyecto: integración continua, p
   <img alt="Distribución de lenguajes en todos mis repositorios" src="assets/languages-light.svg" width="100%">
 </picture>
 
-<sub>Calculado sobre el código de todos mis repositorios, públicos y privados.</sub>
+<sub>Calculado sobre el código de todos mis repositorios, públicos y privados. La tarjeta de actividad se actualiza sola cada día.</sub>
 
 ## Cómo trabajo
 
-- **Calidad automatizada.** Pipelines de CI que validan formato, lint, tipos, pruebas con cobertura, build e imágenes Docker en cada cambio.
+- **Calidad automatizada.** Pipelines que validan formato, lint, tipos, pruebas con cobertura, build e imágenes Docker en cada cambio.
 - **Pruebas en varios niveles.** Unitarias, de integración contra la API y end-to-end con varios usuarios simultáneos.
-- **Entornos reproducibles.** Docker Compose con base de datos, almacenamiento de objetos y correo de pruebas para levantar todo el sistema con un comando.
-- **Arquitectura clara.** Monorepos con código compartido entre cliente y servidor, módulos por dominio y migraciones de base de datos versionadas.
-- **Documentación útil.** READMEs que explican qué hace el sistema, cómo ejecutarlo y por qué se tomaron las decisiones técnicas.
+- **Entornos reproducibles.** Docker Compose con base de datos, almacenamiento de objetos y correo de pruebas: todo el sistema se levanta con un comando.
+- **Arquitectura clara.** Monorepos con código compartido entre cliente y servidor, módulos por dominio y migraciones versionadas.
+- **Personas en el circuito.** Las automatizaciones que tocan datos reales o envían mensajes piden aprobación antes de actuar.
